@@ -10,7 +10,7 @@ import {
   Play, 
   Loader2 
 } from 'lucide-react';
-import { validateDataset, uploadDataset, getSampleCsvUrl } from '../api';
+import { validateDataset, uploadDataset, getSampleCsvUrl, downloadClientSampleCsv } from '../api';
 
 export default function UploadModal({ onClose, onSuccess, defaultThresholdSlope = 0.0015, defaultThresholdVoltage = 0.08 }) {
   const [file, setFile] = useState(null);
@@ -100,14 +100,14 @@ export default function UploadModal({ onClose, onSuccess, defaultThresholdSlope 
                 Download a pre-formatted synthetic JEDEC HTOL burn-in dataset.
               </p>
             </div>
-            <a
-              href={getSampleCsvUrl()}
-              download
+            <button
+              type="button"
+              onClick={downloadClientSampleCsv}
               className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition shadow-sm"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Download Sample CSV</span>
-            </a>
+            </button>
           </div>
 
           {/* Drag & Drop File Zone */}

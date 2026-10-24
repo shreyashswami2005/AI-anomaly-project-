@@ -13,7 +13,7 @@ import {
   ChevronsLeft,
   ChevronsRight
 } from 'lucide-react';
-import { getExportCsvUrl, getExportPdfUrl } from '../api';
+import { getExportCsvUrl, getExportPdfUrl, downloadClientExportCsv } from '../api';
 
 export default function ScreeningTable({ components, activeRunId, onSelectComponent }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -159,14 +159,13 @@ export default function ScreeningTable({ components, activeRunId, onSelectCompon
         {/* Export Buttons */}
         {activeRunId && (
           <div className="flex items-center space-x-2">
-            <a
-              href={getExportCsvUrl(activeRunId)}
-              download
+            <button
+              onClick={() => downloadClientExportCsv(components)}
               className="flex items-center space-x-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition"
             >
               <Download className="w-3.5 h-3.5 text-emerald-600" />
               <span>Export CSV</span>
-            </a>
+            </button>
             <a
               href={getExportPdfUrl(activeRunId)}
               target="_blank"

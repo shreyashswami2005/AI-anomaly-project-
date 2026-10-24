@@ -25,3 +25,5 @@ backend/data/*.db
 # Environment variables
 .env
 .env.local
+
+.vercel
